@@ -54,12 +54,13 @@ jobs:
           sudo -E apt-get -y autoremove --purge
           sudo -E apt-get clean
 
-      - name: 自定义插件
+      - name: Custom plugin
         run: |
           cd package
           mkdir openwrt-packages
           cd openwrt-packages
           git clone https://github.com/AdguardTeam/AdGuardHome.git
+          git clone https://github.com/pymumu/smartdns.git
 
       - name: Update feeds
         run: |
@@ -175,6 +176,7 @@ jobs:
           CONFIG_PACKAGE_luci-app-dnscrypt-proxy=y
           CONFIG_PACKAGE_luci-app-ramfree=y
           CONFIG_PACKAGE_AdGuardHome=y
+          CONFIG_PACKAGE_smartdns=y
           EOF
 
           # LuCI主题:
